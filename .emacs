@@ -16,7 +16,7 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (smex linum-relative iedit auto-complete-c-headers yasnippet irony)))
+    (multiple-cursors smex linum-relative iedit auto-complete-c-headers yasnippet irony)))
  '(tool-bar-mode nil)
  '(tooltip-mode nil))
 (custom-set-faces
@@ -38,8 +38,12 @@
 ;; Basic stuff
 ;; ------------------------------------------------------------------------------------------------
 
+;; Hide startup-screen
+(setq inhibit-startup-screen t)
+
 ;; Hotkeys
 (global-set-key (kbd "M-#") 'compile)
+(global-set-key "\M-\t" 'other-window)
 
 ;; Auto-close brackets
 (electric-pair-mode 1)
@@ -67,6 +71,12 @@
 ;; enable YASnippet
 (require 'yasnippet)
 (yas-global-mode 1)
+
+;; enable Multiple-Cursors
+(require 'multiple-cursors)
+(global-set-key (kbd "C-c C-c r") 'mc/edit-lines)
+(global-set-key (kbd "C-<") 'mc/mark-next-like-this)
+(global-set-key (kbd "C->") 'mc/mark-previous-like-this)
 
 ;; ------------------------------------------------------------------------------------------------
 
@@ -103,3 +113,4 @@
 (setq c-default-style "C-Style")
 
 ;; ------------------------------------------------------------------------------------------------
+
